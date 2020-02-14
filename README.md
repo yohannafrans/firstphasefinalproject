@@ -4,4 +4,4 @@
 ##### Actually, I've been presented this project on 18th January 2020. But sorry I just upload it now.
 ##### Thank God that I can passed the first phase.
 
-##### p.s : you can download CentOS CentOS-7-x86_64-Minimal-1908.iso by your own cause the file size's big so I can't upload it here 
+##### p.s : you can download CentOS CentOS-7-x86_64-Minimal-1908.iso by your own (I can't upload it here because the file size is big) 
