@@ -1,0 +1,4 @@
+CREATE DATABASE wpdb;
+CREATE USER wpuser@localhost IDENTIFIED BY 'abc';
+GRANT ALL PRIVILEGES ON wpdb.* TO wpuser@localhost;
+FLUSH PRIVILEGES;
