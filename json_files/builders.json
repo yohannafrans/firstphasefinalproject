@@ -1,0 +1,45 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "RedHat_64",
+            "iso_url": "F:/blibli/project/fix/CentOS-7-x86_64-Minimal-1908.iso",
+            "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+            "iso_checksum_type": "sha256",
+            "ssh_username": "root",
+            "ssh_password": "nomorsatu",
+            "boot_wait": "5s",
+            "ssh_timeout": "10m",
+            "vm_name": "packer-centos-7-newest32",
+            "http_directory": "http",
+            "output_directory": "packer-centos-7-newest32",
+            "format": "ova",
+            "boot_command": [
+                "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+              ],
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--memory", "2048"],
+                ["modifyvm", "{{.Name}}", "--cpus", "2"]
+            ],
+            "shutdown_command": "/sbin/halt -p"
+        }
+    ],
+    "provisioners" : [
+        {
+            "type": "shell",
+            "inline": ["mkdir /tmp/config"]
+        },
+        {
+            "type": "file",
+            "source": "F:/blibli/project/fix/scripts/config/config.zip",
+            "destination": "/tmp/config/config.zip"
+        },
+        {
+            "type": "shell",
+            "scripts": [
+                "F:/blibli/project/fix/scripts/install_wordpress.sh"
+            ],
+            "timeout": "30m"
+        }
+    ]
+}
